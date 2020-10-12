@@ -1,0 +1,40 @@
+{
+  "seed": 1357,
+  "verbose": true,
+  "nbins": 15,
+  "loss": {
+    "name": "cross_entropy"
+  },
+  "model": {
+    "params": {
+      "num_hiddens": [
+        10,
+        10
+      ],
+      "nb_steps": 30,
+      "add_condition_to_integrand": false,
+      "device": "cuda:0",
+      "conditioned": false
+    },
+    "name": "monotonic"
+  },
+  "dataset": {
+    "num_workers": 1,
+    "name": "probs_resnet152_imgnet_logits.p",
+    "batch_size": 200,
+    "num_folds": 3,
+    "root": "data",
+    "shuffle": true
+  },
+  "calibrate": {
+    "num_epochs": 15,
+    "save_summary_steps": 1
+  },
+  "optimizer": {
+    "params": {
+      "weight_decay": 0,
+      "lr": 0.001
+    },
+    "name": "Adam"
+  }
+}

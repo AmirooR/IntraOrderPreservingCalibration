@@ -1,0 +1,41 @@
+{
+  "dataset": {
+    "batch_size": 256,
+    "shuffle": true,
+    "num_folds": 5,
+    "name": "probs_resnet_wide32_c100_logits.p",
+    "num_workers": 1,
+    "root": "data"
+  },
+  "nbins": 15,
+  "loss": {
+    "name": "cross_entropy"
+  },
+  "verbose": true,
+  "optimizer": {
+    "params": {
+      "weight_decay": 0.0005,
+      "lr": 0.001
+    },
+    "name": "Adam"
+  },
+  "seed": 1357,
+  "calibrate": {
+    "num_epochs": 40,
+    "save_summary_steps": 1
+  },
+  "model": {
+    "params": {
+      "invariant": true,
+      "residual": false
+    },
+    "type": "fc",
+    "base_params": {
+      "num_hiddens": [
+        100,
+        100
+      ]
+    },
+    "name": "order_preserving"
+  }
+}

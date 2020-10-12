@@ -1,0 +1,41 @@
+{
+  "verbose": true,
+  "optimizer": {
+    "name": "Adam",
+    "params": {
+      "lr": 0.005,
+      "weight_decay": 0.0005
+    }
+  },
+  "calibrate": {
+    "num_epochs": 40,
+    "save_summary_steps": 1
+  },
+  "nbins": 15,
+  "dataset": {
+    "root": "data",
+    "num_folds": 5,
+    "name": "probs_resnet152_SD_SVHN_logits.p",
+    "num_workers": 1,
+    "batch_size": 256,
+    "shuffle": true
+  },
+  "loss": {
+    "name": "cross_entropy"
+  },
+  "model": {
+    "name": "order_preserving",
+    "type": "fc",
+    "base_params": {
+      "num_hiddens": [
+        50,
+        50
+      ]
+    },
+    "params": {
+      "residual": false,
+      "invariant": false
+    }
+  },
+  "seed": 1357
+}

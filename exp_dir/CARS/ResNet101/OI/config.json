@@ -1,0 +1,41 @@
+{
+  "dataset": {
+    "shuffle": true,
+    "num_folds": 5,
+    "name": "probs_resnet101scratch_cars_logits.p",
+    "root": "data",
+    "batch_size": 256,
+    "num_workers": 1
+  },
+  "verbose": true,
+  "seed": 1357,
+  "model": {
+    "type": "fc",
+    "base_params": {
+      "num_hiddens": [
+        50,
+        50
+      ]
+    },
+    "name": "order_preserving",
+    "params": {
+      "residual": false,
+      "invariant": true
+    }
+  },
+  "loss": {
+    "name": "cross_entropy"
+  },
+  "optimizer": {
+    "params": {
+      "weight_decay": 0.0005,
+      "lr": 0.005
+    },
+    "name": "Adam"
+  },
+  "calibrate": {
+    "save_summary_steps": 1,
+    "num_epochs": 30
+  },
+  "nbins": 15
+}

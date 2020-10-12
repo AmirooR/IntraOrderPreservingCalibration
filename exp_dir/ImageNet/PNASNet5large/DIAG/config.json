@@ -1,0 +1,40 @@
+{
+  "calibrate": {
+    "num_epochs": 15,
+    "save_summary_steps": 1
+  },
+  "seed": 1357,
+  "loss": {
+    "name": "cross_entropy"
+  },
+  "dataset": {
+    "batch_size": 200,
+    "name": "probs_pnasnet5large_imgnet_logits.p",
+    "num_workers": 1,
+    "root": "data",
+    "shuffle": true,
+    "num_folds": 3
+  },
+  "nbins": 15,
+  "verbose": true,
+  "model": {
+    "params": {
+      "add_condition_to_integrand": false,
+      "num_hiddens": [
+        20,
+        20
+      ],
+      "device": "cuda:0",
+      "conditioned": false,
+      "nb_steps": 50
+    },
+    "name": "monotonic"
+  },
+  "optimizer": {
+    "params": {
+      "lr": 0.001,
+      "weight_decay": 0
+    },
+    "name": "Adam"
+  }
+}

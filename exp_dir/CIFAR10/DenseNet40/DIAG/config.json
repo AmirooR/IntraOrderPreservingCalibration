@@ -1,0 +1,41 @@
+{
+  "optimizer": {
+    "name": "LBFGS",
+    "params": {
+      "line_search_fn": "strong_wolfe",
+      "max_iter": 2000,
+      "lr": 0.1
+    }
+  },
+  "nbins": 15,
+  "dataset": {
+    "shuffle": true,
+    "num_folds": 5,
+    "root": "data",
+    "num_workers": 1,
+    "name": "probs_densenet40_c10_logits.p",
+    "batch_size": 256
+  },
+  "loss": {
+    "name": "cross_entropy"
+  },
+  "calibrate": {
+    "save_summary_steps": 1,
+    "num_epochs": 1
+  },
+  "seed": 1357,
+  "model": {
+    "name": "monotonic",
+    "params": {
+      "conditioned": false,
+      "add_condition_to_integrand": false,
+      "nb_steps": 50,
+      "device": "cuda:0",
+      "num_hiddens": [
+        2,
+        2
+      ]
+    }
+  },
+  "verbose": true
+}

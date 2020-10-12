@@ -1,0 +1,41 @@
+{
+  "verbose": true,
+  "dataset": {
+    "shuffle": true,
+    "num_folds": 5,
+    "num_workers": 1,
+    "batch_size": 256,
+    "name": "probs_resnet101_cars_logits.p",
+    "root": "data"
+  },
+  "optimizer": {
+    "name": "Adam",
+    "params": {
+      "weight_decay": 0.0005,
+      "lr": 0.001
+    }
+  },
+  "calibrate": {
+    "save_summary_steps": 1,
+    "num_epochs": 30
+  },
+  "seed": 1357,
+  "loss": {
+    "name": "cross_entropy"
+  },
+  "nbins": 15,
+  "model": {
+    "type": "fc",
+    "name": "order_preserving",
+    "base_params": {
+      "num_hiddens": [
+        100,
+        100
+      ]
+    },
+    "params": {
+      "residual": false,
+      "invariant": true
+    }
+  }
+}

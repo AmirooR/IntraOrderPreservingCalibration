@@ -1,0 +1,41 @@
+{
+  "loss": {
+    "name": "cross_entropy"
+  },
+  "nbins": 15,
+  "calibrate": {
+    "save_summary_steps": 1,
+    "num_epochs": 15
+  },
+  "verbose": true,
+  "model": {
+    "params": {
+      "residual": false,
+      "invariant": true
+    },
+    "name": "order_preserving",
+    "type": "fc",
+    "base_params": {
+      "num_hiddens": [
+        50,
+        50
+      ]
+    }
+  },
+  "optimizer": {
+    "name": "Adam",
+    "params": {
+      "lr": 0.005,
+      "weight_decay": 0.0005
+    }
+  },
+  "seed": 1357,
+  "dataset": {
+    "name": "probs_pnasnet5large_imgnet_logits.p",
+    "root": "data",
+    "num_workers": 1,
+    "batch_size": 512,
+    "num_folds": 3,
+    "shuffle": true
+  }
+}

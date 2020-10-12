@@ -1,0 +1,41 @@
+{
+  "optimizer": {
+    "name": "Adam",
+    "params": {
+      "weight_decay": 0.0005,
+      "lr": 0.005
+    }
+  },
+  "model": {
+    "type": "fc",
+    "name": "order_preserving",
+    "base_params": {
+      "num_hiddens": [
+        150,
+        150
+      ]
+    },
+    "params": {
+      "residual": false,
+      "invariant": true
+    }
+  },
+  "calibrate": {
+    "save_summary_steps": 1,
+    "num_epochs": 15
+  },
+  "verbose": true,
+  "seed": 1357,
+  "loss": {
+    "name": "cross_entropy"
+  },
+  "dataset": {
+    "name": "probs_resnet152_imgnet_logits.p",
+    "shuffle": true,
+    "num_folds": 3,
+    "batch_size": 512,
+    "root": "data",
+    "num_workers": 1
+  },
+  "nbins": 15
+}

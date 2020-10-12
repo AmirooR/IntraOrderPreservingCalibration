@@ -1,0 +1,40 @@
+{
+  "dataset": {
+    "root": "data",
+    "shuffle": true,
+    "num_workers": 1,
+    "num_folds": 5,
+    "name": "probs_resnet_wide32_c100_logits.p",
+    "batch_size": 256
+  },
+  "calibrate": {
+    "num_epochs": 1,
+    "save_summary_steps": 1
+  },
+  "loss": {
+    "name": "cross_entropy"
+  },
+  "nbins": 15,
+  "optimizer": {
+    "name": "LBFGS",
+    "params": {
+      "line_search_fn": "strong_wolfe",
+      "lr": 0.01,
+      "max_iter": 2000
+    }
+  },
+  "seed": 1357,
+  "verbose": true,
+  "model": {
+    "name": "monotonic",
+    "params": {
+      "conditioned": false,
+      "add_condition_to_integrand": false,
+      "num_hiddens": [
+        1
+      ],
+      "device": "cuda:0",
+      "nb_steps": 30
+    }
+  }
+}

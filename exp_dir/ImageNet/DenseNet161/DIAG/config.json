@@ -1,0 +1,39 @@
+{
+  "optimizer": {
+    "name": "Adam",
+    "params": {
+      "lr": 0.001,
+      "weight_decay": 0
+    }
+  },
+  "calibrate": {
+    "save_summary_steps": 1,
+    "num_epochs": 15
+  },
+  "seed": 1357,
+  "dataset": {
+    "batch_size": 200,
+    "shuffle": true,
+    "num_folds": 3,
+    "root": "data",
+    "name": "probs_densenet161_imgnet_logits.p",
+    "num_workers": 1
+  },
+  "verbose": true,
+  "nbins": 15,
+  "loss": {
+    "name": "cross_entropy"
+  },
+  "model": {
+    "name": "monotonic",
+    "params": {
+      "nb_steps": 30,
+      "conditioned": false,
+      "add_condition_to_integrand": false,
+      "device": "cuda:0",
+      "num_hiddens": [
+        10
+      ]
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "calibrate": {
+    "save_summary_steps": 1,
+    "num_epochs": 30
+  },
+  "model": {
+    "params": {
+      "num_hiddens": [
+        50
+      ],
+      "nb_steps": 50,
+      "add_condition_to_integrand": false,
+      "device": "cuda:0",
+      "conditioned": false
+    },
+    "name": "monotonic"
+  },
+  "verbose": true,
+  "nbins": 15,
+  "seed": 1357,
+  "dataset": {
+    "num_workers": 1,
+    "root": "data",
+    "name": "probs_resnet50_cars_logits.p",
+    "num_folds": 5,
+    "batch_size": 256,
+    "shuffle": true
+  },
+  "loss": {
+    "name": "cross_entropy"
+  },
+  "optimizer": {
+    "params": {
+      "lr": 0.005,
+      "weight_decay": 0
+    },
+    "name": "Adam"
+  }
+}

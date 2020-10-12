@@ -1,0 +1,41 @@
+{
+  "seed": 1357,
+  "model": {
+    "name": "order_preserving",
+    "type": "fc",
+    "base_params": {
+      "num_hiddens": [
+        50,
+        50
+      ]
+    },
+    "params": {
+      "residual": false,
+      "invariant": false
+    }
+  },
+  "dataset": {
+    "num_workers": 1,
+    "batch_size": 256,
+    "name": "probs_resnet50NTSNet_birds_logits.p",
+    "num_folds": 5,
+    "shuffle": true,
+    "root": "data"
+  },
+  "optimizer": {
+    "name": "Adam",
+    "params": {
+      "weight_decay": 0.0005,
+      "lr": 0.001
+    }
+  },
+  "loss": {
+    "name": "cross_entropy"
+  },
+  "calibrate": {
+    "num_epochs": 30,
+    "save_summary_steps": 1
+  },
+  "nbins": 15,
+  "verbose": true
+}

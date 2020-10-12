@@ -1,0 +1,41 @@
+{
+  "calibrate": {
+    "num_epochs": 15,
+    "save_summary_steps": 1
+  },
+  "dataset": {
+    "shuffle": true,
+    "name": "probs_densenet161_imgnet_logits.p",
+    "num_folds": 3,
+    "batch_size": 512,
+    "root": "data",
+    "num_workers": 1
+  },
+  "loss": {
+    "name": "cross_entropy"
+  },
+  "seed": 1357,
+  "model": {
+    "base_params": {
+      "num_hiddens": [
+        100,
+        100
+      ]
+    },
+    "params": {
+      "residual": false,
+      "invariant": true
+    },
+    "name": "order_preserving",
+    "type": "fc"
+  },
+  "optimizer": {
+    "name": "Adam",
+    "params": {
+      "lr": 0.005,
+      "weight_decay": 0.0005
+    }
+  },
+  "nbins": 15,
+  "verbose": true
+}
