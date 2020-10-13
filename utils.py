@@ -51,50 +51,6 @@ def get_rng(obj=None):
         seed = _RNG_SEED
     return np.random.RandomState(seed)
 
-class NumpyRNG(object):
-  """
-  Singleton class for numpy rng.
-  It should be created after calling fix_rng_seed
-  """
-  _rng = None
-  def __new__(cls, *args, **kwargs):
-    if not cls._rng:
-      cls._rng = get_rng()
-    return cls._rng
-
-
-class Params():
-    """Class that loads hyperparameters from a json file.
-
-    Example:
-    ```
-    params = Params(json_path)
-    print(params.learning_rate)
-    params.learning_rate = 0.5  # change the value of learning_rate in params
-    ```
-    """
-
-    def __init__(self, json_path):
-        with open(json_path) as f:
-            params = json.load(f)
-            self.__dict__.update(params)
-
-    def save(self, json_path):
-        with open(json_path, 'w') as f:
-            json.dump(self.__dict__, f, indent=4)
-
-    def update(self, json_path):
-        """Loads parameters from json file"""
-        with open(json_path) as f:
-            params = json.load(f)
-            self.__dict__.update(params)
-
-    @property
-    def dict(self):
-        """Gives dict-like access to Params instance by `params.dict['learning_rate']"""
-        return self.__dict__
-
-
 class RunningAverage():
     """A simple class that maintains the running average of a quantity
 
@@ -212,7 +168,6 @@ def load_checkpoint(checkpoint, model, optimizer=None):
 class _ECELoss(nn.Module):
   """
   Calculates the Expected Calibration Error of a model.
-  (This isn't necessary for temperature scaling, just a cool metric).
 
   The input to this loss is the logits of a model, NOT the softmax scores.
 
@@ -267,7 +222,6 @@ class _ECELoss(nn.Module):
 class _CwECELoss(nn.Module):
   """
   Calculates the Class-wise Expected Calibration Error of a model.
-  (This isn't necessary for temperature scaling, just a cool metric).
 
   The input to this loss is the logits of a model, NOT the softmax scores.
 
@@ -278,10 +232,6 @@ class _CwECELoss(nn.Module):
 
   We then return a weighted average of the gaps, based on the number
   of samples in each bin
-
-  See: Naeini, Mahdi Pakdaman, Gregory F. Cooper, and Milos Hauskrecht.
-  "Obtaining Well Calibrated Probabilities Using Bayesian Binning." AAAI.
-  2015.
   """
   def __init__(self, n_bins=15, avg=True):
     """
@@ -345,7 +295,6 @@ def classwise_ECE(probs, y_true, power = 1, bins = 15):
 class _CwECELossDir(nn.Module):
   """
   Calculates the Class-wise Expected Calibration Error of a model.
-  (This isn't necessary for temperature scaling, just a cool metric).
 
   The input to this loss is the logits of a model, NOT the softmax scores.
 
@@ -356,10 +305,6 @@ class _CwECELossDir(nn.Module):
 
   We then return a weighted average of the gaps, based on the number
   of samples in each bin
-
-  See: Naeini, Mahdi Pakdaman, Gregory F. Cooper, and Milos Hauskrecht.
-  "Obtaining Well Calibrated Probabilities Using Bayesian Binning." AAAI.
-  2015.
   """
   def __init__(self, n_bins=15):
     """
@@ -377,7 +322,6 @@ class _CwECELossDir(nn.Module):
 class _MCELoss(nn.Module):
   """
   Calculates the Maximum Calibration Error of a model.
-  (This isn't necessary for temperature scaling, just a cool metric).
 
   The input to this loss is the logits of a model, NOT the softmax scores.
 
@@ -419,7 +363,6 @@ class _MCELoss(nn.Module):
 class _BrierLoss(nn.Module):
   """
   Calculates the Brier Error of a model.
-  (This isn't necessary for temperature scaling, just a cool metric).
 
   The input to this loss is the logits of a model, NOT the softmax scores.
 

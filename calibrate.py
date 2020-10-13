@@ -35,7 +35,6 @@ def calibrate(model, optimizer, loss_fn, dataloader, metrics, config):
         dataloader: (DataLoader) a torch.utils.data.DataLoader object that fetches training data
         metrics: (dict) a dictionary of functions that compute a metric using the output and labels of each batch
         config: (config) hyperparameters
-        num_steps: (int) number of batches to train on, each of size config.batch_size
     """
 
     # set model to training mode
@@ -98,7 +97,6 @@ def calibrate_fullgrad(model, optimizer, loss_fn, dataloader, metrics, config, v
         dataloader: (DataLoader) a torch.utils.data.DataLoader object that fetches training data
         metrics: (dict) a dictionary of functions that compute a metric using the output and labels of each batch
         config: (config) hyperparameters
-        num_steps: (int) number of batches to train on, each of size config.batch_size
     """
 
     # set model to training mode
@@ -173,7 +171,6 @@ def calibrate_and_evaluate(model, train_dataloader, val_dataloader, optimizer, l
       metrics: (dict) a dictionary of functions that compute a metric using the output and labels of each batch
       config: (config) hyperparameters
       exp_dir: (string) directory containing config, weights and log
-      sampler: (Sampler) the sampler which used for sampling data.
       restore_file: (string) optional- name of file to restore from (without its extension .pth.tar)
   """
   # reload weights from restore_file if specified
