@@ -2,7 +2,7 @@
 
 This repository is the official implementation of NeurIPS 2020 paper: [Intra Order-preserving Functions for Calibration of Multi-Class Neural Networks](https://arxiv.org/abs/2003.06820)
 
->📋 TODO: include a graphic
+![Order preserving/invariant simplex](https://github.com/AmirooR/IntraOrderPreservingCalibration/blob/main/architecture.001.png?raw=true)
 
 ## Requirements
 
