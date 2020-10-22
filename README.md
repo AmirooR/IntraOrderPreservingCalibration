@@ -40,7 +40,7 @@ python evaluate.py --exp_dir exp_dir/{dataset}/{model}/{method}
 
 ## Results
 
-The results will be saved in json format in the config dirname. As an example: `"ensemble/post_metrics_test_ensemble_best_ece.json"` corresponds to the ECE values reported in Table 1 of the paper and `"cross_val_test_post_metrics_best_ece.json"` corresponds to the results without ensemble (by averaging the metrics over different folds). Note that the ensemble is followed by Kull etal 2019.
+The results will be saved in json format in the config dirname. As an example: `"ensemble/post_metrics_test_ensemble_best_ece.json"` corresponds to the ECE values reported in Table 1 of the paper and `"cross_val_test_post_metrics_best_ece.json"` corresponds to the results without ensemble (by averaging the metrics over different folds). Note that the results might be slightly different from the reported numbers in the paper due to randomness in training. 
 
 ## Cite
 

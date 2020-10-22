@@ -49,7 +49,7 @@ def calibrate(model, optimizer, loss_fn, dataloader, metrics, config):
         for i, (train_batch, labels_batch) in enumerate(dataloader):
             # move to GPU if available
             if config.cuda:
-                train_batch, labels_batch = train_batch.cuda(async=True), labels_batch.cuda(async=True)
+                train_batch, labels_batch = train_batch.cuda(), labels_batch.cuda()
             # convert to torch Variables
             train_batch, labels_batch = Variable(train_batch), Variable(labels_batch)
 
@@ -112,7 +112,7 @@ def calibrate_fullgrad(model, optimizer, loss_fn, dataloader, metrics, config, v
         for i, (train_batch, labels_batch) in enumerate(dataloader):
             # move to GPU if available
             if config.cuda:
-                train_batch, labels_batch = train_batch.cuda(async=True), labels_batch.cuda(async=True)
+                train_batch, labels_batch = train_batch.cuda(), labels_batch.cuda()
             logits_list.append(train_batch)
             labels_list.append(labels_batch)
             t.set_postfix(i='{}'.format(i))
@@ -125,7 +125,7 @@ def calibrate_fullgrad(model, optimizer, loss_fn, dataloader, metrics, config, v
           for i, (train_batch, labels_batch) in enumerate(val_dataloader):
               # move to GPU if available
               if config.cuda:
-                  train_batch, labels_batch = train_batch.cuda(async=True), labels_batch.cuda(async=True)
+                  train_batch, labels_batch = train_batch.cuda(), labels_batch.cuda()
               val_logits_list.append(train_batch)
               val_labels_list.append(labels_batch)
               t.set_postfix(i='{}'.format(i))
