@@ -14,6 +14,9 @@ source venv/bin/activate
 pip3 install torch torchvision tqdm easydict scikit-learn
 ```
 
+## Data
+Use this [google drive link](https://drive.google.com/file/d/18QvhqtfUY77xV7tZa25q4h4BLsbeFmxV/view?usp=sharing) to download all of the logits in pickle format.
+
 ## Setup
 
 Put the corresponding logits to the data folder. 
