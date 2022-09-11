@@ -204,7 +204,7 @@ if __name__ == '__main__':
     exp_dir = os.path.join(args.exp_dir, 'ensemble')
     if not os.path.exists(exp_dir):
       os.makedirs(exp_dir)
-    pre_metrics, post_metrics = evaluate(model, loss_fn,
+    pre_metrics, post_metrics = evaluate(models, loss_fn,
                                          test_loader, metrics, config, save_logits, exp_dir, save_prefix=metric_name)
     save_path = os.path.join(exp_dir, "post_metrics_test_ensemble_{}_{}.json".format(args.restore_file, metric_name))
     utils.save_dict_to_json(post_metrics, save_path)
