@@ -19,7 +19,7 @@
     "name": "LBFGS",
     "params": {
       "line_search_fn": "strong_wolfe",
-      "lr": 0.1,
+      "lr": 0.001,
       "max_iter": 2000
     }
   },
@@ -31,7 +31,8 @@
       "conditioned": false,
       "add_condition_to_integrand": false,
       "num_hiddens": [
-        1
+        2,
+        2
       ],
       "device": "cuda:0",
       "nb_steps": 30
